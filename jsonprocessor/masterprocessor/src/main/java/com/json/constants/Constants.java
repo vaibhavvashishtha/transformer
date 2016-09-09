@@ -7,7 +7,7 @@ public interface Constants {
 
     static final String TOOLS_OUTPUT_MASTER_DIRECTORY = "tools_output_master_directory";
     static final String TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY = "tools_transformer_properties_directory";
-    static final String SITES = "sites";
+    static final String SITES = "site";
     static final String WWW = "www.";
     static final String COM = ".com";
     static final String WPT = "wpt";
@@ -19,4 +19,5 @@ public interface Constants {
     static final String PROPERTIES = ".properties";
     static final String RUNS_DATA_JSON = "_runs_data.json";
     static final String DOT = ".";
+	static final String TOOLS_RESULT_JSON_DIRECTORY = "tool_result_json_directory";
 }

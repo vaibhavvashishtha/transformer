@@ -5,6 +5,7 @@ import org.apache.commons.configuration2.Configuration;
 import org.apache.commons.configuration2.FileBasedConfiguration;
 import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.commons.configuration2.builder.FileBasedConfigurationBuilder;
+import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.configuration2.builder.fluent.Parameters;
 
 import java.io.FileInputStream;
@@ -32,18 +33,15 @@ public class ReadPropertiesServiceImpl implements ReadPropertiesService {
 
     @Override
     public Configuration buildConfiguration(String file) throws Exception {
-        Parameters params = new Parameters();
-        Configuration config = null;
-        FileBasedConfigurationBuilder<FileBasedConfiguration> builder =
-                new FileBasedConfigurationBuilder<FileBasedConfiguration>(PropertiesConfiguration.class)
-                        .configure(params.properties()
-                                .setFileName(file));
+        Configurations configs = new Configurations();
+        
         try {
-            config = builder.getConfiguration();
+            return configs.properties(file);
         } catch(Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return config;
+       
     }
 
     private Map<String, Object> readProperties(InputStream inputStream) throws Exception{

@@ -14,67 +14,78 @@ import java.util.Set;
  */
 public class WPTJsonProcessor {
 
-    private String splunkJsonFileName = "";
-    private String outputDirectoryForSplunkJsons = "";
-    private String propertiesFilePath = "";
-    private String propertiesFileName = "";
-    private String sourceJson = "";
+	//private String splunkJsonFileName = "";
+	private String outputDirectoryForSplunkJsons = "";
+	private String propertiesFilePath = "";
+	private String propertiesFileName = "";
+	private String sourceJson = "";
+	private String resultDirectory = "";
+	private String resultFileName = "";
+	private String slash = "";
 
-    public void processJson(String splunkJsonFileName, String outputDirectoryForSplunkJsons, String propertiesFilePath, String propertiesFileName, String sourceJson) {
-        try {
-            this.splunkJsonFileName = splunkJsonFileName;
-            this.outputDirectoryForSplunkJsons = outputDirectoryForSplunkJsons;
-            this.propertiesFilePath = propertiesFilePath;
-            this.propertiesFileName = propertiesFileName;
-            this.sourceJson = sourceJson;
-            processWPTJSON();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	public void processJson( String resultFileName, String outputDirectoryForSplunkJsons, String propertiesFilePath,
+			String propertiesFileName, String sourceJson, String resultDirectory) {
+		try {
+			//this.splunkJsonFileName = splunkJsonFileName;
+			this.outputDirectoryForSplunkJsons = outputDirectoryForSplunkJsons;
+			this.propertiesFilePath = propertiesFilePath;
+			this.propertiesFileName = propertiesFileName;
+			this.sourceJson = sourceJson;
+			this.resultDirectory = resultDirectory;
+			this.resultFileName = resultFileName;
+			if (System.getProperty("os.name").startsWith("Windows")) {
+        		slash = "\\";
+        	} else {
+        		slash = "/";
+        	}
+			processWPTJSON();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-    /**
-     * @throws Exception
-     */
-    public void processWPTJSON() throws Exception {
-        Map jsonMap = getMapFromJSON();
-        writeUpdatedJson(jsonMap);
-    }
+	/**
+	 * @throws Exception
+	 */
+	public void processWPTJSON() throws Exception {
+		Map jsonMap = getMapFromJSON();
+		writeUpdatedJson(jsonMap);
+	}
 
-    /**
-     * @return
-     */
-    public Map getMapFromJSON() throws Exception{
-        Map<String, Object> jsonMap = JsonUtils.jsonToMap(new FileInputStream(new File(sourceJson)));
-        return jsonMap;
-    }
+	/**
+	 * @return
+	 */
+	public Map getMapFromJSON() throws Exception {
+		Map<String, Object> jsonMap = JsonUtils
+				.jsonToMap(new FileInputStream(new File(outputDirectoryForSplunkJsons + slash + sourceJson)));
+		return jsonMap;
+	}
 
-    /**
-     * @param jsonData
-     * @throws Exception
-     */
-    public void writeUpdatedJson(Map<String, Object> jsonData) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        FileOutputStream stream = new FileOutputStream(new File(outputDirectoryForSplunkJsons
-                + "/" + splunkJsonFileName));
-        stream.write(mapper.writeValueAsString(preprepareJsonDataToWrite(jsonData)).getBytes());
-        stream.close();
-    }
+	/**
+	 * @param jsonData
+	 * @throws Exception
+	 */
+	public void writeUpdatedJson(Map<String, Object> jsonData) throws Exception {
+		ObjectMapper mapper = new ObjectMapper();
+		FileOutputStream stream = new FileOutputStream(
+				new File(resultDirectory + slash + resultFileName), false);
+		stream.write(mapper.writeValueAsString(preprepareJsonDataToWrite(jsonData)).getBytes());
+		stream.close();
+	}
 
-    /**
-     * @param sourceJsonMap
-     * @return
-     */
-    public Map<String, Object> preprepareJsonDataToWrite(Map<String, Object> sourceJsonMap)
-            throws Exception {
-        Map targetJsonMap = new HashMap();
-        Map<String, String> keyMap = ReadProperties.loadPropertiesFromFile(propertiesFilePath
-                +"/"+propertiesFileName, true);
+	/**
+	 * @param sourceJsonMap
+	 * @return
+	 */
+	public Map<String, Object> preprepareJsonDataToWrite(Map<String, Object> sourceJsonMap) throws Exception {
+		Map targetJsonMap = new HashMap();
+		Map<String, String> keyMap = ReadProperties
+				.loadPropertiesFromFile(propertiesFilePath + slash + propertiesFileName, true);
 
-        Set<String> keys = keyMap.keySet();
-        for (String key : keys) {
-            targetJsonMap.put(keyMap.get(key), sourceJsonMap.get(key));
-        }
-        return targetJsonMap;
-    }
+		Set<String> keys = keyMap.keySet();
+		for (String key : keys) {
+			targetJsonMap.put(keyMap.get(key), sourceJsonMap.get(key));
+		}
+		return targetJsonMap;
+	}
 }
