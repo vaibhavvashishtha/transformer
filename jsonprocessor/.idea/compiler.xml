@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="gpsiprocessor" />
+        <module name="masterprocessor" />
+        <module name="pally" />
+        <module name="readproperties" />
+        <module name="sitespeed" />
+        <module name="sonar" />
+        <module name="wpt" />
+        <module name="zap" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gpsiprocessor" target="1.8" />
+      <module name="jsonprocessor" target="1.8" />
+      <module name="masterprocessor" target="1.8" />
+      <module name="pally" target="1.8" />
+      <module name="readproperties" target="1.8" />
+      <module name="sitespeed" target="1.8" />
+      <module name="sonar" target="1.8" />
+      <module name="wpt" target="1.8" />
+      <module name="zap" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,29 @@
+{
+  "id": 259,
+  "uuid": "AVYs1QNXh60p3L4OZGi2",
+  "key": "com.diageo.d2.aem.foundation:parent",
+  "name": "Platform-AEM",
+  "scope": "PRJ",
+  "qualifier": "TRK",
+  "date": "2016-08-10T15:53:03+0530",
+  "creationDate": "2016-07-27T20:19:32+0530",
+  "lname": "Platform-AEM",
+  "version": "1.4.6-SNAPSHOT",
+  "msr": [
+    {
+      "key": "critical_violations",
+      "val": 30,
+      "frmt_val": 30
+    },
+    {
+      "key": "blocker_violations",
+      "val": 12,
+      "frmt_val": 12
+    },
+    {
+      "key": "major_violations",
+      "val": 301,
+      "frmt_val": 301
+    }
+  ]
+}
