@@ -22,6 +22,11 @@
             <artifactId>wptprocessor</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.json</groupId>
+            <artifactId>gpsiprocessor</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

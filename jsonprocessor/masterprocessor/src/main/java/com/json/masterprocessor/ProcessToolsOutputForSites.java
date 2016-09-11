@@ -1,5 +1,6 @@
 package com.json.masterprocessor;
 
+import com.json.GPSIJsonProcessor;
 import com.json.WPTJsonProcessor;
 import com.json.service.ReadPropertiesService;
 import com.json.service.impl.ReadPropertiesServiceImpl;
@@ -21,14 +22,14 @@ public class ProcessToolsOutputForSites {
 			sites = args[1].toString().split(",");
 		}
 		processWPTJson();
-		processGDPSIJson(wptJsonProcessor, site);
+		processGPSIJson();
 	}
 
 	@SuppressWarnings("unused")
 	private static void processWPTJson() throws Exception {
 		WPTJsonProcessor wptJsonProcessor = new WPTJsonProcessor();
 
-		if (sites != null) {
+		if (sites == null) {
 			for (Object site : masterProcessorConfig.getList(Constants.SITES)) {
 				processWPTJson(wptJsonProcessor, site);
 			}
@@ -41,15 +42,15 @@ public class ProcessToolsOutputForSites {
 
 	@SuppressWarnings("unused")
 	private static void processGPSIJson() throws Exception {
-		GPSIJsonProcessor wptJsonProcessor = new GPSIJsonProcessor();
+		GPSIJsonProcessor gpsiJsonProcessor = new GPSIJsonProcessor();
 
-		if (sites != null) {
+		if (sites == null) {
 			for (Object site : masterProcessorConfig.getList(Constants.SITES)) {
-				processWPTJson(wptJsonProcessor, site);
+				processGPSIJson(gpsiJsonProcessor, site);
 			}
 		} else {
 			for (Object site : sites) {
-				processWPTJson(wptJsonProcessor, site);
+				processGPSIJson(gpsiJsonProcessor, site);
 			}
 		}
 	}
@@ -65,11 +66,11 @@ public class ProcessToolsOutputForSites {
 				masterProcessorConfig.getString(site + Constants.DOT + Constants.WPT),
 				masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
 	}
-	
-	private static void processGDPSIJson(GPSIJsonProcessor gpsiJsonProcessor, Object site) {
+
+	private static void processGPSIJson(GPSIJsonProcessor gpsiJsonProcessor, Object site) {
 		String siteName = getSiteName(site);
 		String slash = getCorrectSlash();
-		gpsiJsonProcessor.processJson(Constants.WPT + Constants.RUNS_DATA_JSON,
+		gpsiJsonProcessor.processJson(Constants.GPSI + Constants.RUNS_DATA_JSON,
 				masterProcessorConfig.getString(Constants.TOOLS_OUTPUT_MASTER_DIRECTORY) + slash + siteName,
 				masterProcessorConfig.getString(Constants.TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY),
 				Constants.WPT + Constants.PROPERTIES,

@@ -22,4 +22,5 @@ public interface Constants {
 	static final String TOOLS_RESULT_JSON_DIRECTORY = "tool_result_json_directory";
 	static final Object GSPI_DESKTOP = "gpsidesktop";
 	static final Object GSPI_MOBILE = "gpsimobile";
+    String GPSI = "gpsi";
 }

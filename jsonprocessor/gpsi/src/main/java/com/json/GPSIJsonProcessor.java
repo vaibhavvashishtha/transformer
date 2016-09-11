@@ -2,7 +2,6 @@ package com.json;
 
 import com.bazaarvoice.jolt.JsonUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.filefilter.WildcardFileFilter;
 
 import java.io.*;
 import java.util.*;
@@ -21,12 +20,10 @@ public class GPSIJsonProcessor {
 	private String resultFileName = "";
 	private String slash = "";
 
-	/**
-	 * @param args
-	 */
-	public void processGPSIJson(String resultFileName, String outputDirectoryForSplunkJsons, String propertiesFilePath,
-			String propertiesFileName, String sourceJsonForDesktop, String sourceJsonforMobile,
-			String resultDirectory) {
+
+	public void processJson(String resultFileName, String outputDirectoryForSplunkJsons, String propertiesFilePath,
+							String propertiesFileName, String sourceJsonForDesktop, String sourceJsonforMobile,
+							String resultDirectory) {
 		try {
 			// this.splunkJsonFileName = splunkJsonFileName;
 			this.outputDirectoryForSplunkJsons = outputDirectoryForSplunkJsons;
@@ -41,7 +38,7 @@ public class GPSIJsonProcessor {
 			} else {
 				slash = "/";
 			}
-			processGpsiJSON();
+			processJson();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,7 +47,7 @@ public class GPSIJsonProcessor {
 	/**
 	 * @throws Exception
 	 */
-	public void processGpsiJSON() throws Exception {
+	public void processJson() throws Exception {
 
 		Map jsonMap = getConsolidatedGPSIMap(getMapFromJSON(true), getMapFromJSON(false));
 
