@@ -12,157 +12,131 @@ import java.util.*;
  */
 public class GPSIJsonProcessor {
 
-    private static String outputDirectoryForSplunkJsons = "";
-    private static String propertiesFilePath = "";
-    private static String sourceJsonPath = "";
-    private static String tool = "";
+	private String outputDirectoryForSplunkJsons = "";
+	private String propertiesFilePath = "";
+	private String propertiesFileName = "";
+	private String sourceJsonForDesktop = "";
+	private String sourceJsonForMobile = "";
+	private String resultDirectory = "";
+	private String resultFileName = "";
+	private String slash = "";
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        try {
-            outputDirectoryForSplunkJsons = args[0];
-            propertiesFilePath = args[1];
-            sourceJsonPath = args[2];
-            tool = args[3];
-            processJson();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	/**
+	 * @param args
+	 */
+	public void processGPSIJson(String resultFileName, String outputDirectoryForSplunkJsons, String propertiesFilePath,
+			String propertiesFileName, String sourceJsonForDesktop, String sourceJsonforMobile,
+			String resultDirectory) {
+		try {
+			// this.splunkJsonFileName = splunkJsonFileName;
+			this.outputDirectoryForSplunkJsons = outputDirectoryForSplunkJsons;
+			this.propertiesFilePath = propertiesFilePath;
+			this.propertiesFileName = propertiesFileName;
+			this.sourceJsonForDesktop = sourceJsonForDesktop;
+			this.sourceJsonForMobile = sourceJsonforMobile;
+			this.resultDirectory = resultDirectory;
+			this.resultFileName = resultFileName;
+			if (System.getProperty("os.name").startsWith("Windows")) {
+				slash = "\\";
+			} else {
+				slash = "/";
+			}
+			processGpsiJSON();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-    public static void processJson() throws Exception {
-        switch (tool) {
-            case "gpsi":
-                processGpsiJSON();
-                break;
-            default:
-                break;
-        }
-    }
+	/**
+	 * @throws Exception
+	 */
+	public void processGpsiJSON() throws Exception {
 
-    /**
-     * @throws Exception
-     */
-    public static void processGpsiJSON() throws Exception {
+		Map jsonMap = getConsolidatedGPSIMap(getMapFromJSON(true), getMapFromJSON(false));
 
-        Map jsonMap = getConsolidatedGPSIMap(getMapFromJSON(true), getMapFromJSON(false));
+		writeUpdatedJson(jsonMap);
+	}
 
-        writeUpdatedJson(jsonMap);
-    }
+	private Map getConsolidatedGPSIMap(Map desktopMap, Map mobileMap) {
+		Map jsonMap = new HashMap();
+		jsonMap.put("desktop_score", ((Map) ((Map) desktopMap.get("ruleGroups")).get("SPEED")).get("score"));
+		jsonMap.put("mobile_score", ((Map) ((Map) mobileMap.get("ruleGroups")).get("SPEED")).get("score"));
+		return jsonMap;
+	}
 
-    private static Map getConsolidatedGPSIMap(Map desktopMap, Map mobileMap) {
-        Map jsonMap = new HashMap();
-        jsonMap.put("desktop_score", ((Map)((Map)desktopMap.get("ruleGroups")).get("SPEED")).get("score"));
-        jsonMap.put("mobile_score", ((Map)((Map)mobileMap.get("ruleGroups")).get("SPEED")).get("score"));
-        return jsonMap;
-    }
+	/**
+	 * @return
+	 */
+	public Map getMapFromJSON(boolean isDesktopJSON) throws Exception {
+		Map<String, Object> jsonMap = null;
+		if (isDesktopJSON)
+			jsonMap = JsonUtils.jsonToMap(
+					new FileInputStream(new File(outputDirectoryForSplunkJsons + slash + sourceJsonForDesktop)));
+		else
+			jsonMap = JsonUtils.jsonToMap(
+					new FileInputStream(new File(outputDirectoryForSplunkJsons + slash + sourceJsonForMobile)));
+		return jsonMap;
+	}
 
-    /**
-     * @return
-     */
-    public static Map getMapFromJSON(boolean isDesktopJSON) throws Exception{
-        Map<String, Object> jsonMap = null;
-        if (isDesktopJSON)
-            jsonMap = JsonUtils.jsonToMap(new FileInputStream(new File(sourceJsonPath+"/"+tool+"desktop.json")));
-        else
-            jsonMap = JsonUtils.jsonToMap(new FileInputStream(new File(sourceJsonPath+"/"+tool+"mobile.json")));
-        return jsonMap;
-    }
+	/**
+	 * @param jsonData
+	 * @throws Exception
+	 */
+	public void writeUpdatedJson(Map<String, Object> jsonData) throws Exception {
+		ObjectMapper mapper = new ObjectMapper();
+		FileOutputStream stream = new FileOutputStream(new File(resultDirectory + slash + resultFileName));
 
-    /**
-     * @param jsonData
-     * @throws Exception
-     */
-    public static void writeUpdatedJson(Map<String, Object> jsonData) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        FileOutputStream stream = new FileOutputStream(new File(outputDirectoryForSplunkJsons
-                + "/" + tool+"_runs_data.json"));
-        switch (tool) {
-            case "gpsi":
-                stream.write(mapper.writeValueAsString(preprepareJsonDataToWrite(jsonData, "gpsi")).getBytes());
-                break;
-            default:
-                break;
-        }
-        stream.close();
-    }
+		stream.write(mapper.writeValueAsString(preprepareJsonDataToWrite(jsonData)).getBytes());
 
-    /**
-     * @param sourceJsonMap
-     * @return
-     */
-    public static Map<String, Object> preprepareJsonDataToWrite(Map<String, Object> sourceJsonMap,
-                                                                String tool)
-            throws Exception {
-        Map targetJsonMap = new HashMap();
-        Map keyMap = ReadProperties.loadPropertiesFromFile(propertiesFilePath
-                    +"/"+tool+"keysforsplunkjson.properties", true);
+		stream.close();
+	}
 
-        switch (tool) {
-            case "sonar":
-                getStringObjectMapForSonar(sourceJsonMap, keyMap, targetJsonMap);
-                break;
-            default:
-                getStringObjectMap(sourceJsonMap, keyMap, targetJsonMap);
-                break;
-        }
-        return targetJsonMap;
-    }
+	/**
+	 * @param sourceJsonMap
+	 * @return
+	 */
+	public Map<String, Object> preprepareJsonDataToWrite(Map<String, Object> sourceJsonMap)
+			throws Exception {
+		Map targetJsonMap = new HashMap();
+		Map keyMap = ReadProperties
+				.loadPropertiesFromFile(propertiesFilePath + slash + propertiesFileName, true);
 
-    /**
-     *
-     * @param sourceJsonMap
-     * @param keyMap
-     * @param targetJsonMap
-     */
-    private static void getStringObjectMapForSonar(Map<String, Object> sourceJsonMap,
-                                                   Map<String, String> keyMap, Map targetJsonMap) {
-        String violationName = (String)sourceJsonMap.get("key");
-        String violationCount = ((Integer)sourceJsonMap.get("val")).toString();
-        Map<String, Object> violationMap = new HashMap<>();
-        violationMap.put(violationName, violationCount);
-        getStringObjectMap(violationMap, keyMap, targetJsonMap);
-    }
+		
+		
+			getStringObjectMap(sourceJsonMap, keyMap, targetJsonMap);
+		
+		return targetJsonMap;
+	}
 
-    /**
-     *
-     * @param sourceJsonMap
-     * @param keyMap
-     * @param targetJsonMap
-     * @return
-     */
-    private static Map<String, Object> getStringObjectMap(Map<String, Object> sourceJsonMap,
-                                                          Map<String, String> keyMap, Map targetJsonMap) {
-        Set<String> keys = keyMap.keySet();
-        for (String key : keys) {
-            if (sourceJsonMap.get(key) != null)
-                targetJsonMap.put(keyMap.get(key), sourceJsonMap.get(key));
-        }
-        return targetJsonMap;
-    }
+	
 
-    /**
-     * @return
-     */
-    public static Map<String, Object> preprepareJsonDataToWrite(List listOfJsonMaps)
-            throws Exception {
-        Map targetJsonMap = new HashMap();
-        for (Object sourceJson : listOfJsonMaps) {
-            targetJsonMap.putAll(preprepareJsonDataToWrite((Map)sourceJson, tool));
-        }
-        return targetJsonMap;
-    }
+	/**
+	 *
+	 * @param sourceJsonMap
+	 * @param keyMap
+	 * @param targetJsonMap
+	 * @return
+	 */
+	private Map<String, Object> getStringObjectMap(Map<String, Object> sourceJsonMap, Map<String, String> keyMap,
+			Map targetJsonMap) {
+		Set<String> keys = keyMap.keySet();
+		for (String key : keys) {
+			if (sourceJsonMap.get(key) != null)
+				targetJsonMap.put(keyMap.get(key), sourceJsonMap.get(key));
+		}
+		return targetJsonMap;
+	}
 
-    public static File[] getListOfFiles() {
-        File dir = new File(sourceJsonPath);
+	/**
+	 * @return
+	 */
+	public Map<String, Object> preprepareJsonDataToWrite(List listOfJsonMaps) throws Exception {
+		Map targetJsonMap = new HashMap();
+		for (Object sourceJson : listOfJsonMaps) {
+			targetJsonMap.putAll(preprepareJsonDataToWrite((Map) sourceJson));
+		}
+		return targetJsonMap;
+	}
 
-        FileFilter fileFilterDesktop = new WildcardFileFilter("gpsi*desk*.json");
-        FileFilter fileFilterMobile = new WildcardFileFilter("gpsi*mob*.json");
-
-        File[] files = new File[2];
-        return null;
-    }
+	
 }
-

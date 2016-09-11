@@ -20,4 +20,6 @@ public interface Constants {
     static final String RUNS_DATA_JSON = "_runs_data.json";
     static final String DOT = ".";
 	static final String TOOLS_RESULT_JSON_DIRECTORY = "tool_result_json_directory";
+	static final Object GSPI_DESKTOP = "gpsidesktop";
+	static final Object GSPI_MOBILE = "gpsimobile";
 }
