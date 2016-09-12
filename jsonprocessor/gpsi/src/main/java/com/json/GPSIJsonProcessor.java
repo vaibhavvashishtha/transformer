@@ -4,6 +4,7 @@ import com.bazaarvoice.jolt.JsonUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -97,12 +98,15 @@ public class GPSIJsonProcessor {
 		Map targetJsonMap = new HashMap();
 		Map keyMap = ReadProperties
 				.loadPropertiesFromFile(propertiesFilePath + slash + propertiesFileName, true);
-
-		
 		
 			getStringObjectMap(sourceJsonMap, keyMap, targetJsonMap);
-		
+			addDateToJson(targetJsonMap);
 		return targetJsonMap;
+	}
+
+	private void addDateToJson(Map targetJsonMap) {
+		Calendar cal = Calendar.getInstance();
+		targetJsonMap.put("date", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(cal.getTime()));
 	}
 
 	
@@ -124,16 +128,18 @@ public class GPSIJsonProcessor {
 		return targetJsonMap;
 	}
 
-	/**
-	 * @return
-	 */
-	public Map<String, Object> preprepareJsonDataToWrite(List listOfJsonMaps) throws Exception {
-		Map targetJsonMap = new HashMap();
-		for (Object sourceJson : listOfJsonMaps) {
-			targetJsonMap.putAll(preprepareJsonDataToWrite((Map) sourceJson));
-		}
-		return targetJsonMap;
-	}
+//	/**
+//	 * @return
+//	 */
+//	public Map<String, Object> preprepareJsonDataToWrite(List listOfJsonMaps) throws Exception {
+//		Map targetJsonMap = new HashMap();
+//		for (Object sourceJson : listOfJsonMaps) {
+//			targetJsonMap.putAll(preprepareJsonDataToWrite((Map) sourceJson));
+//		}
+//		Date date = new Date();
+//		targetJsonMap.put("date", date.getDate() + "-" + date.getMonth());
+//		return targetJsonMap;
+//	}
 
 	
 }

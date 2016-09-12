@@ -10,6 +10,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +92,13 @@ public class ZapXMLProcessor {
         ObjectMapper mapper = new ObjectMapper();
         FileOutputStream stream = new FileOutputStream(new File(resultDirectory
                 + slash + resultFileName));
+        addDateToJson(jsonData);
         stream.write(mapper.writeValueAsString(jsonData).getBytes());
         stream.close();
     }
+    
+    private void addDateToJson(Map targetJsonMap) {
+		Calendar cal = Calendar.getInstance();
+		targetJsonMap.put("date", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(cal.getTime()));
+	}
 }

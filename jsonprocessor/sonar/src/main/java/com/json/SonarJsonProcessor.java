@@ -4,6 +4,7 @@ import com.bazaarvoice.jolt.JsonUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -131,7 +132,14 @@ public class SonarJsonProcessor {
         for (Object sourceJson : listOfJsonMaps) {
             targetJsonMap.putAll(preprepareJsonDataToWrite((Map)sourceJson));
         }
+        
+        addDateToJson(targetJsonMap);
         return targetJsonMap;
     }
+    
+    private void addDateToJson(Map targetJsonMap) {
+		Calendar cal = Calendar.getInstance();
+		targetJsonMap.put("date", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(cal.getTime()));
+	}
 }
 

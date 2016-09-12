@@ -1,6 +1,7 @@
 package com.json.masterprocessor;
 
 import com.json.GPSIJsonProcessor;
+import com.json.SitespeedHTMLProcessor;
 import com.json.WPTJsonProcessor;
 import com.json.service.ReadPropertiesService;
 import com.json.service.impl.ReadPropertiesServiceImpl;
@@ -17,16 +18,20 @@ public class ProcessToolsOutputForSites {
 	private static ReadPropertiesService readPropertiesService = new ReadPropertiesServiceImpl();
 	private static Configuration masterProcessorConfig;
 	private static String[] sites;
+	private static String toolToTest;
 
 	public static void main(String[] args) throws Exception {
 		masterProcessorConfig = readPropertiesService.buildConfiguration(args[0]);
 		if (args.length > 1 && args[1] != null) {
 			sites = args[1].toString().split(",");
 		}
+
 		processWPTJson();
 		processGPSIJson();
 		processSonarJson();
 		processZapXML();
+		processSitespeedHTML();
+
 	}
 
 	@SuppressWarnings("unused")
@@ -86,46 +91,78 @@ public class ProcessToolsOutputForSites {
 			}
 		}
 	}
+
+	private static void processSitespeedHTML() throws Exception {
+		SitespeedHTMLProcessor sitespeedHTMLProcessor = new SitespeedHTMLProcessor();
+
+		if (sites == null) {
+			for (Object site : masterProcessorConfig.getList(Constants.SITES)) {
+				processSitespeedHTML(sitespeedHTMLProcessor, site);
+			}
+		} else {
+			for (Object site : sites) {
+				processSitespeedHTML(sitespeedHTMLProcessor, site);
+			}
+		}
+	}
+
 	private static void processWPTJson(WPTJsonProcessor wptJsonProcessor, Object site) {
 		String siteName = getSiteName(site);
 		String slash = getCorrectSlash();
-		wptJsonProcessor.processJson(Constants.WPT + Constants.RUNS_DATA_JSON,
+		wptJsonProcessor.processJson(getResultFileName(Constants.WPT, site),
 				masterProcessorConfig.getString(Constants.TOOLS_OUTPUT_MASTER_DIRECTORY) + slash + siteName,
 				masterProcessorConfig.getString(Constants.TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY),
-				Constants.WPT + Constants.PROPERTIES,
+				masterProcessorConfig.getString(Constants.WPT + Constants.DOT + Constants.PROPERTY_FILE_NAME),
 				masterProcessorConfig.getString(site + Constants.DOT + Constants.WPT),
 				masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
+	}
+
+	private static String getResultFileName(String toolName, Object site) {
+		return toolName + Constants.UNDER_SCORE + site + Constants.RUNS_DATA_JSON;
 	}
 
 	private static void processGPSIJson(GPSIJsonProcessor gpsiJsonProcessor, Object site) {
 		String siteName = getSiteName(site);
 		String slash = getCorrectSlash();
-		gpsiJsonProcessor.processJson(Constants.GPSI + Constants.RUNS_DATA_JSON,
+		gpsiJsonProcessor.processJson(getResultFileName(Constants.GPSI, site),
 				masterProcessorConfig.getString(Constants.TOOLS_OUTPUT_MASTER_DIRECTORY) + slash + siteName,
 				masterProcessorConfig.getString(Constants.TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY),
-				Constants.WPT + Constants.PROPERTIES,
+				masterProcessorConfig.getString(Constants.GPSI + Constants.DOT + Constants.PROPERTY_FILE_NAME),
 				masterProcessorConfig.getString(site + Constants.DOT + Constants.GSPI_DESKTOP),
 				masterProcessorConfig.getString(site + Constants.DOT + Constants.GSPI_MOBILE),
 				masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
 	}
+
 	private static void processSonarJson(SonarJsonProcessor sonarJsonProcessor, Object site) {
 		String siteName = getSiteName(site);
 		String slash = getCorrectSlash();
-		sonarJsonProcessor.processJson(Constants.SONAR + Constants.RUNS_DATA_JSON,
+		sonarJsonProcessor.processJson(getResultFileName(Constants.SONAR, site),
 				masterProcessorConfig.getString(Constants.TOOLS_OUTPUT_MASTER_DIRECTORY) + slash + siteName,
 				masterProcessorConfig.getString(Constants.TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY),
-				Constants.SONAR + Constants.PROPERTIES,
+				masterProcessorConfig.getString(Constants.SONAR + Constants.DOT + Constants.PROPERTY_FILE_NAME),
 				masterProcessorConfig.getString(site + Constants.DOT + Constants.SONAR),
 				masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
 	}
+
 	private static void processZapXML(ZapXMLProcessor zapXMLProcessor, Object site) {
 		String siteName = getSiteName(site);
 		String slash = getCorrectSlash();
-		zapXMLProcessor.processXML(Constants.ZAP + Constants.RUNS_DATA_JSON,
+		zapXMLProcessor.processXML(getResultFileName(Constants.ZAP, site),
 				masterProcessorConfig.getString(Constants.TOOLS_OUTPUT_MASTER_DIRECTORY) + slash + siteName,
 				masterProcessorConfig.getString(Constants.TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY),
-				Constants.ZAP + Constants.PROPERTIES,
+				masterProcessorConfig.getString(Constants.ZAP + Constants.DOT + Constants.PROPERTY_FILE_NAME),
 				masterProcessorConfig.getString(site + Constants.DOT + Constants.ZAP),
+				masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
+	}
+
+	private static void processSitespeedHTML(SitespeedHTMLProcessor sitespeedHTMLProcessor, Object site) {
+		String siteName = getSiteName(site);
+		String slash = getCorrectSlash();
+		sitespeedHTMLProcessor.processHTML(getResultFileName(Constants.SITESPEED, site),
+				masterProcessorConfig.getString(Constants.TOOLS_OUTPUT_MASTER_DIRECTORY) + slash + siteName,
+				masterProcessorConfig.getString(Constants.TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY),
+				masterProcessorConfig.getString(Constants.SITESPEED + Constants.DOT + Constants.PROPERTY_FILE_NAME),
+				masterProcessorConfig.getString(site + Constants.DOT + Constants.SITESPEED),
 				masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
 	}
 

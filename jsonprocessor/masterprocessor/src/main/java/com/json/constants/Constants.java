@@ -22,5 +22,8 @@ public interface Constants {
 	static final String TOOLS_RESULT_JSON_DIRECTORY = "tool_result_json_directory";
 	static final Object GSPI_DESKTOP = "gpsidesktop";
 	static final Object GSPI_MOBILE = "gpsimobile";
+	static final String SITESPEED = "sitespeed";
+	static final String PROPERTY_FILE_NAME = "propertyfilename";
+	static final String UNDER_SCORE = "_";
     String GPSI = "gpsi";
 }
