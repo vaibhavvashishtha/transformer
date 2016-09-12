@@ -17,25 +17,45 @@ import java.util.Map;
 /**
  * Created by vaibhavvashishtha on 06/09/16.
  */
-public class ZapProcessor {
-    public static void main(String[] args) {
+public class ZapXMLProcessor {
+
+    private String outputDirectoryForSplunkJsons = "";
+    private String propertiesFilePath = "";
+    private String propertiesFileName = "";
+    private String sourceXML = "";
+    private String resultFileName = "";
+    private String slash = "";
+    private String resultDirectory = "";
+
+    public  void processXML(String outputDirectoryForSplunkJsons,
+                            String propertiesFilePath,
+                            String propertiesFileName,
+                            String sourceXML,
+                            String resultFileName,
+                            String resultDirectory) {
         try {
-            String sourceFileLocation = args[0];
-            String sourceFileName = args[1];
-            String outputDirectoryForSplunkJsons = args[2];
-            String propertiesFilePath = args[3];
-            String propertiesFileName = args[4];
-            File fXmlFile = new File(sourceFileLocation + "/" + sourceFileName);
+            this.outputDirectoryForSplunkJsons = outputDirectoryForSplunkJsons;
+            this.sourceXML = sourceXML;
+            this.resultFileName = resultFileName;
+            this.propertiesFilePath = propertiesFilePath;
+            this.propertiesFileName = propertiesFileName;
+            this.resultDirectory = resultDirectory;
+
+            if (System.getProperty("os.name").startsWith("Windows")) {
+                slash = "\\";
+            } else {
+                slash = "/";
+            }
+
+            File fXmlFile = new File(outputDirectoryForSplunkJsons + slash + sourceXML);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
 
-            //optional, but recommended
-            //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
             doc.getDocumentElement().normalize();
 
             Map keyMap = ReadProperties.loadPropertiesFromFile(propertiesFilePath
-                    +"/"+propertiesFileName, true);
+                    +slash+propertiesFileName, true);
 
             NodeList nList = doc.getElementsByTagName((String) keyMap.get("nodename"));
             int low = 0;
@@ -66,10 +86,10 @@ public class ZapProcessor {
      * @param jsonData
      * @throws Exception
      */
-    public static void writeUpdatedJson(Map<String, Object> jsonData, String tool, String outputDirectoryForSplunkJsons) throws Exception {
+    public  void writeUpdatedJson(Map<String, Object> jsonData, String tool, String outputDirectoryForSplunkJsons) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        FileOutputStream stream = new FileOutputStream(new File(outputDirectoryForSplunkJsons
-                + "/" + tool+"_runs_data.json"));
+        FileOutputStream stream = new FileOutputStream(new File(resultDirectory
+                + slash + resultFileName));
         stream.write(mapper.writeValueAsString(jsonData).getBytes());
         stream.close();
     }

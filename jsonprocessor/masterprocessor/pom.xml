@@ -27,6 +27,16 @@
             <artifactId>gpsiprocessor</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.json</groupId>
+            <artifactId>sonarprocessor</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.json</groupId>
+            <artifactId>zapprocessor</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

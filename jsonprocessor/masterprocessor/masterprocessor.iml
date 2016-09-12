@@ -18,6 +18,8 @@
     <orderEntry type="module" module-name="wptprocessor" />
     <orderEntry type="module" module-name="gpsiprocessor" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
+    <orderEntry type="module" module-name="sonarprocessor" />
+    <orderEntry type="module" module-name="zapprocessor" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.14" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml:3.14" level="project" />

@@ -11,40 +11,41 @@ import java.util.*;
  */
 public class SonarJsonProcessor {
 
-    private static String outputDirectoryForSplunkJsons = "";
-    private static String propertiesFilePath = "";
-    private static String sourceJsonPath = "";
-    private static String tool = "";
+    private String outputDirectoryForSplunkJsons = "";
+    private String propertiesFilePath = "";
+    private String propertiesFileName = "";
+    private String sourceJson = "";
+    private String resultFileName = "";
+    private String slash = "";
+    private String resultDirectory = "";
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
+    public  void processJson(String resultFileName, String outputDirectoryForSplunkJsons, String propertiesFilePath,
+                                   String propertiesFileName, String sourceJson,
+                                   String resultDirectory) {
         try {
-            outputDirectoryForSplunkJsons = args[0];
-            propertiesFilePath = args[1];
-            sourceJsonPath = args[2];
-            tool = args[3];
+            this.outputDirectoryForSplunkJsons = outputDirectoryForSplunkJsons;
+            this.propertiesFilePath = propertiesFilePath;
+            this.propertiesFileName = propertiesFileName;
+            this.sourceJson = sourceJson;
+            this.resultDirectory = resultDirectory;
+            this.resultFileName = resultFileName;
+            if (System.getProperty("os.name").startsWith("Windows")) {
+                slash = "\\";
+            } else {
+                slash = "/";
+            }
             processSonarJSON();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void processJson() throws Exception {
-        switch (tool) {
-            case "sonar":
-                processSonarJSON();
-                break;
-            default:
-                break;
-        }
-    }
+
 
     /**
      * @throws Exception
      */
-    public static void processSonarJSON() throws Exception {
+    public  void processSonarJSON() throws Exception {
         Map jsonMap = getMapFromJSON();
         List<Map<String, Object>> listOfViolations = new ArrayList<>();
         listOfViolations = (List)jsonMap.get("msr");
@@ -54,8 +55,8 @@ public class SonarJsonProcessor {
     /**
      * @return
      */
-    public static Map getMapFromJSON() throws Exception{
-        Map<String, Object> jsonMap = JsonUtils.jsonToMap(new FileInputStream(new File(sourceJsonPath+"/"+tool+".json")));
+    public  Map getMapFromJSON() throws Exception{
+        Map<String, Object> jsonMap = JsonUtils.jsonToMap(new FileInputStream(new File(outputDirectoryForSplunkJsons+slash+sourceJson)));
         return jsonMap;
     }
 
@@ -63,17 +64,13 @@ public class SonarJsonProcessor {
      * @param jsonData
      * @throws Exception
      */
-    public static void writeUpdatedJson(Map<String, Object> jsonData) throws Exception {
+    public  void writeUpdatedJson(Map<String, Object> jsonData) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        FileOutputStream stream = new FileOutputStream(new File(outputDirectoryForSplunkJsons
-                + "/" + tool+"_runs_data.json"));
-        switch (tool) {
-            case "sonar":
+        FileOutputStream stream = new FileOutputStream(new File(resultDirectory
+                + slash + resultFileName));
+
                 stream.write(mapper.writeValueAsString(preprepareJsonDataToWrite((List) jsonData.get("msr"))).getBytes());
-                break;
-            default:
-                break;
-        }
+
         stream.close();
     }
 
@@ -81,21 +78,15 @@ public class SonarJsonProcessor {
      * @param sourceJsonMap
      * @return
      */
-    public static Map<String, Object> preprepareJsonDataToWrite(Map<String, Object> sourceJsonMap,
-                                                                String tool)
+    public  Map<String, Object> preprepareJsonDataToWrite(Map<String, Object> sourceJsonMap)
             throws Exception {
         Map targetJsonMap = new HashMap();
         Map keyMap = ReadProperties.loadPropertiesFromFile(propertiesFilePath
-                +"/"+tool+"keysforsplunkjson.properties", true);
+                +slash + propertiesFileName, true);
 
-        switch (tool) {
-            case "sonar":
+
                 getStringObjectMapForSonar(sourceJsonMap, keyMap, targetJsonMap);
-                break;
-            default:
-                getStringObjectMap(sourceJsonMap, keyMap, targetJsonMap);
-                break;
-        }
+
         return targetJsonMap;
     }
 
@@ -105,7 +96,7 @@ public class SonarJsonProcessor {
      * @param keyMap
      * @param targetJsonMap
      */
-    private static void getStringObjectMapForSonar(Map<String, Object> sourceJsonMap,
+    private  void getStringObjectMapForSonar(Map<String, Object> sourceJsonMap,
                                                    Map<String, String> keyMap, Map targetJsonMap) {
         String violationName = (String)sourceJsonMap.get("key");
         String violationCount = ((Integer)sourceJsonMap.get("val")).toString();
@@ -121,7 +112,7 @@ public class SonarJsonProcessor {
      * @param targetJsonMap
      * @return
      */
-    private static Map<String, Object> getStringObjectMap(Map<String, Object> sourceJsonMap,
+    private  Map<String, Object> getStringObjectMap(Map<String, Object> sourceJsonMap,
                                                           Map<String, String> keyMap, Map targetJsonMap) {
         Set<String> keys = keyMap.keySet();
         for (String key : keys) {
@@ -134,11 +125,11 @@ public class SonarJsonProcessor {
     /**
      * @return
      */
-    public static Map<String, Object> preprepareJsonDataToWrite(List listOfJsonMaps)
+    public  Map<String, Object> preprepareJsonDataToWrite(List listOfJsonMaps)
             throws Exception {
         Map targetJsonMap = new HashMap();
         for (Object sourceJson : listOfJsonMaps) {
-            targetJsonMap.putAll(preprepareJsonDataToWrite((Map)sourceJson, tool));
+            targetJsonMap.putAll(preprepareJsonDataToWrite((Map)sourceJson));
         }
         return targetJsonMap;
     }

@@ -4,7 +4,9 @@ import com.json.GPSIJsonProcessor;
 import com.json.WPTJsonProcessor;
 import com.json.service.ReadPropertiesService;
 import com.json.service.impl.ReadPropertiesServiceImpl;
+import com.json.zapprocessor.ZapXMLProcessor;
 import org.apache.commons.configuration2.Configuration;
+import com.json.SonarJsonProcessor;
 
 import com.json.constants.Constants;
 
@@ -23,6 +25,8 @@ public class ProcessToolsOutputForSites {
 		}
 		processWPTJson();
 		processGPSIJson();
+		processSonarJson();
+		processZapXML();
 	}
 
 	@SuppressWarnings("unused")
@@ -55,7 +59,33 @@ public class ProcessToolsOutputForSites {
 		}
 	}
 
-	
+	private static void processSonarJson() throws Exception {
+		SonarJsonProcessor sonarJsonProcessor = new SonarJsonProcessor();
+
+		if (sites == null) {
+			for (Object site : masterProcessorConfig.getList(Constants.SITES)) {
+				processSonarJson(sonarJsonProcessor, site);
+			}
+		} else {
+			for (Object site : sites) {
+				processSonarJson(sonarJsonProcessor, site);
+			}
+		}
+	}
+
+	private static void processZapXML() throws Exception {
+		ZapXMLProcessor zapXMLProcessor = new ZapXMLProcessor();
+
+		if (sites == null) {
+			for (Object site : masterProcessorConfig.getList(Constants.SITES)) {
+				processZapXML(zapXMLProcessor, site);
+			}
+		} else {
+			for (Object site : sites) {
+				processZapXML(zapXMLProcessor, site);
+			}
+		}
+	}
 	private static void processWPTJson(WPTJsonProcessor wptJsonProcessor, Object site) {
 		String siteName = getSiteName(site);
 		String slash = getCorrectSlash();
@@ -76,6 +106,26 @@ public class ProcessToolsOutputForSites {
 				Constants.WPT + Constants.PROPERTIES,
 				masterProcessorConfig.getString(site + Constants.DOT + Constants.GSPI_DESKTOP),
 				masterProcessorConfig.getString(site + Constants.DOT + Constants.GSPI_MOBILE),
+				masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
+	}
+	private static void processSonarJson(SonarJsonProcessor sonarJsonProcessor, Object site) {
+		String siteName = getSiteName(site);
+		String slash = getCorrectSlash();
+		sonarJsonProcessor.processJson(Constants.SONAR + Constants.RUNS_DATA_JSON,
+				masterProcessorConfig.getString(Constants.TOOLS_OUTPUT_MASTER_DIRECTORY) + slash + siteName,
+				masterProcessorConfig.getString(Constants.TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY),
+				Constants.SONAR + Constants.PROPERTIES,
+				masterProcessorConfig.getString(site + Constants.DOT + Constants.SONAR),
+				masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
+	}
+	private static void processZapXML(ZapXMLProcessor zapXMLProcessor, Object site) {
+		String siteName = getSiteName(site);
+		String slash = getCorrectSlash();
+		zapXMLProcessor.processXML(Constants.ZAP + Constants.RUNS_DATA_JSON,
+				masterProcessorConfig.getString(Constants.TOOLS_OUTPUT_MASTER_DIRECTORY) + slash + siteName,
+				masterProcessorConfig.getString(Constants.TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY),
+				Constants.ZAP + Constants.PROPERTIES,
+				masterProcessorConfig.getString(site + Constants.DOT + Constants.ZAP),
 				masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
 	}
 
