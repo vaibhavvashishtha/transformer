@@ -67,13 +67,18 @@ public class SonarJsonProcessor {
      */
     public  void writeUpdatedJson(Map<String, Object> jsonData) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        FileOutputStream stream = new FileOutputStream(new File(resultDirectory
-                + slash + resultFileName));
+        FileOutputStream stream = new FileOutputStream(createFileIfNotPresent(),false);
 
                 stream.write(mapper.writeValueAsString(preprepareJsonDataToWrite((List) jsonData.get("msr"))).getBytes());
 
         stream.close();
     }
+    
+	private File createFileIfNotPresent() throws IOException {
+		File file = new File(resultDirectory + slash + resultFileName);
+		file.getParentFile().mkdirs();
+		return file;
+	}
 
     /**
      * @param sourceJsonMap

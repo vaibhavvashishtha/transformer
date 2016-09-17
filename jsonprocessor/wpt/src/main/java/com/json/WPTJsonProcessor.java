@@ -14,7 +14,7 @@ import java.util.Set;
 /**
  * Created by vaibhavvashishtha on 03/09/16.
  */
-public class WPTJsonProcessor {
+public class WPTJsonProcessor implements FileProcessor{
 
 	//private String splunkJsonFileName = "";
 	private String outputDirectoryForSplunkJsons = "";
@@ -69,11 +69,16 @@ public class WPTJsonProcessor {
 	 */
 	public void writeUpdatedJson(Map<String, Object> jsonData) throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
-		FileOutputStream stream = new FileOutputStream(
-				new File(resultDirectory + slash + resultFileName), false);
+		FileOutputStream stream = new FileOutputStream(createFileIfNotPresent(), false);
 		addDateToJson(jsonData);
 		stream.write(mapper.writeValueAsString(preprepareJsonDataToWrite(jsonData)).getBytes());
 		stream.close();
+	}
+	
+	private File createFileIfNotPresent() throws IOException {
+		File file = new File(resultDirectory + slash + resultFileName);
+		file.getParentFile().mkdirs();
+		return file;
 	}
 	
 	private void addDateToJson(Map targetJsonMap) {

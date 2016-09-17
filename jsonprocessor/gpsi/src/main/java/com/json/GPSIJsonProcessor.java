@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Created by vaibhavvashishtha on 03/09/16.
  */
-public class GPSIJsonProcessor {
+public class GPSIJsonProcessor implements FileProcessor{
 
 	private String outputDirectoryForSplunkJsons = "";
 	private String propertiesFilePath = "";
@@ -82,11 +82,17 @@ public class GPSIJsonProcessor {
 	 */
 	public void writeUpdatedJson(Map<String, Object> jsonData) throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
-		FileOutputStream stream = new FileOutputStream(new File(resultDirectory + slash + resultFileName));
+		FileOutputStream stream = new FileOutputStream(createFileIfNotPresent());
 
 		stream.write(mapper.writeValueAsString(preprepareJsonDataToWrite(jsonData)).getBytes());
 
 		stream.close();
+	}
+
+	private File createFileIfNotPresent() throws IOException {
+		File file = new File(resultDirectory + slash + resultFileName);
+		file.getParentFile().mkdirs();
+		return file;
 	}
 
 	/**
