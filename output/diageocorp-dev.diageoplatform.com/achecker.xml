@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resultset[
+<!ELEMENT resultset (summary,results)>
+<!ELEMENT summary (status,sessionID,NumOfErrors,NumOfLikelyProblems,NumOfPotentialProblems,guidelines)>
+<!ELEMENT status (#PCDATA)>
+<!ELEMENT sessionID (#PCDATA)>
+<!ELEMENT NumOfErrors (#PCDATA)>
+<!ELEMENT NumOfLikelyProblems (#PCDATA)>
+<!ELEMENT NumOfPotentialProblems (#PCDATA)>
+<!ELEMENT guidelines (guideline)*>
+<!ELEMENT guideline (#PCDATA)>
+<!ELEMENT results (result)*>
+<!ELEMENT result (resultType,lineNum,columnNum,errorMsg,errorSourceCode,repair*,sequenceID*,decisionPass*,decisionFail*,decisionMade*,decisionMadeDate*)>
+<!ELEMENT resultType (#PCDATA)>
+<!ELEMENT lineNum (#PCDATA)>
+<!ELEMENT columnNum (#PCDATA)>
+<!ELEMENT errorMsg (#PCDATA)>
+<!ELEMENT errorSourceCode (#PCDATA)>
+<!ELEMENT repair (#PCDATA)>
+<!ELEMENT sequenceID (#PCDATA)>
+<!ELEMENT decisionPass (#PCDATA)>
+<!ELEMENT decisionFail (#PCDATA)>
+<!ELEMENT decisionMade (#PCDATA)>
+<!ELEMENT decisionMadeDate (#PCDATA)>
+<!ENTITY lt "&#38;#60;">
+<!ENTITY gt "&#62;">
+<!ENTITY amp "&#38;#38;">
+<!ENTITY apos "&#39;">
+<!ENTITY quot "&#34;">
+<!ENTITY ndash "&#8211;">
+]>
+<resultset>
+  <summary>
+    <status>CONDITIONAL PASS</status>
+    <sessionID>576c0a6848b50d74c92eaafe1af928affdee177a</sessionID>
+    <NumOfErrors>0</NumOfErrors>
+    <NumOfLikelyProblems>0</NumOfLikelyProblems>
+    <NumOfPotentialProblems>59</NumOfPotentialProblems>
+
+    <guidelines>
+      <guideline>WCAG 2.0 (Level AA)</guideline>
+
+    </guidelines>
+  </summary>
+
+  <results>
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>14</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=54&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=54'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;title&lt;/code&gt; might not describe the document.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;title&gt;J&amp;amp;B Scotch Whisky, Whisky Cocktails &amp;amp; Drink Recipes&lt;/title&gt;</errorSourceCode>
+        
+        <sequenceID>14_1_54</sequenceID>
+        <decisionPass>&lt;code&gt;title&lt;/code&gt; describes the document.</decisionPass>
+        <decisionFail>&lt;code&gt;title&lt;/code&gt; does not describe the document.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>45</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+var jTitle=&quot;UK English&quot;;
+
+
+&lt;/script&gt;</errorSourceCode>
+        
+        <sequenceID>45_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>45</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+var jTitle=&quot;UK English&quot;;
+
+
+&lt;/script&gt;</errorSourceCode>
+        
+        <sequenceID>45_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>45</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+var jTitle=&quot;UK English&quot;;
+
+
+&lt;/script&gt;</errorSourceCode>
+        
+        <sequenceID>45_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>50</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+/*! jQuery v2.1.4 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
+!funct ...</errorSourceCode>
+        
+        <sequenceID>50_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>50</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+/*! jQuery v2.1.4 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
+!funct ...</errorSourceCode>
+        
+        <sequenceID>50_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>50</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+/*! jQuery v2.1.4 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
+!funct ...</errorSourceCode>
+        
+        <sequenceID>50_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>63</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js&quot;&gt;&lt;/script&gt;</errorSourceCode>
+        
+        <sequenceID>63_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>63</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js&quot;&gt;&lt;/script&gt;</errorSourceCode>
+        
+        <sequenceID>63_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>63</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js&quot;&gt;&lt;/script&gt;</errorSourceCode>
+        
+        <sequenceID>63_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>64</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+window.isAnalytics=&#039;yes&#039;;
+window.loadMoment = false;
+window.isFooter = &#039;No&#039;; 
+agegate_setti ...</errorSourceCode>
+        
+        <sequenceID>64_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>64</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+window.isAnalytics=&#039;yes&#039;;
+window.loadMoment = false;
+window.isFooter = &#039;No&#039;; 
+agegate_setti ...</errorSourceCode>
+        
+        <sequenceID>64_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>64</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+window.isAnalytics=&#039;yes&#039;;
+window.loadMoment = false;
+window.isFooter = &#039;No&#039;; 
+agegate_setti ...</errorSourceCode>
+        
+        <sequenceID>64_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>70</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script src=&quot;//web.diageoagegate.com/media/js/agegate.min.js&quot; async&gt;&lt;/script&gt;</errorSourceCode>
+        
+        <sequenceID>70_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>70</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script src=&quot;//web.diageoagegate.com/media/js/agegate.min.js&quot; async&gt;&lt;/script&gt;</errorSourceCode>
+        
+        <sequenceID>70_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>70</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script src=&quot;//web.diageoagegate.com/media/js/agegate.min.js&quot; async&gt;&lt;/script&gt;</errorSourceCode>
+        
+        <sequenceID>70_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>71</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script data-main=&quot;/etc/ui/jbscotch/clientlibs/core/require/js/main&quot; src=&quot;/etc/ui/iea/clientlibs/cor ...</errorSourceCode>
+        
+        <sequenceID>71_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>71</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script data-main=&quot;/etc/ui/jbscotch/clientlibs/core/require/js/main&quot; src=&quot;/etc/ui/iea/clientlibs/cor ...</errorSourceCode>
+        
+        <sequenceID>71_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>71</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script data-main=&quot;/etc/ui/jbscotch/clientlibs/core/require/js/main&quot; src=&quot;/etc/ui/iea/clientlibs/cor ...</errorSourceCode>
+        
+        <sequenceID>71_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>72</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+(function() {
+  (function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+     ...</errorSourceCode>
+        
+        <sequenceID>72_3_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>72</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+(function() {
+  (function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+     ...</errorSourceCode>
+        
+        <sequenceID>72_3_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>72</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+(function() {
+  (function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+     ...</errorSourceCode>
+        
+        <sequenceID>72_3_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=131&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=131'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Long quotations may not be marked using the &lt;code&gt;blockquote&lt;/code&gt; element.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_131</sequenceID>
+        <decisionPass>All long quotations have been marked with the &lt;code&gt;blockquote&lt;/code&gt; element.</decisionPass>
+        <decisionFail>All long quotations are not marked with the &lt;code&gt;blockquote&lt;/code&gt; element.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=250&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=250'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Text may refer to items by shape, size, or relative position alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_250</sequenceID>
+        <decisionPass>There are no references to items in the document by shape, size, or relative position alone.</decisionPass>
+        <decisionFail>There are references to items in the document by shape, size, or relative position alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=276&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=276'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Repeated components may not appear in the same relative order each time they appear.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_276</sequenceID>
+        <decisionPass>Repeated components appear in the same relative order on this page.</decisionPass>
+        <decisionFail>Repeated components do not appear in the same relative order on this page.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=270&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=270'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Unicode right-to-left marks or left-to-right marks may be required.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_270</sequenceID>
+        <decisionPass>Unicode right-to-left marks or left-to-right marks are used whenever the HTML bidirectional algorithm produces undesirable results.</decisionPass>
+        <decisionFail>Unicode right-to-left marks or left-to-right marks are not used whenever the HTML bidirectional algorithm produces undesirable results.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=262&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=262'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Groups of links with a related purpose are not marked.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_262</sequenceID>
+        <decisionPass>All groups of links with a related purpose are marked.</decisionPass>
+        <decisionFail>All groups of links with a related purpose are not marked.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=110&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=110'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Words or phrases that are not in the document's primary language may not be identified.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_110</sequenceID>
+        <decisionPass>All words outside the primary language are identified.</decisionPass>
+        <decisionFail>Words outside the primary language are not identified.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=248&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=248'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Visual lists may not be properly marked.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_248</sequenceID>
+        <decisionPass>All visual lists contain proper markup.</decisionPass>
+        <decisionFail>Not all visual lists contain proper markup.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=28&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=28'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Document may be missing a &quot;skip to content&quot; link.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_28</sequenceID>
+        <decisionPass>Document contians a &quot;skip to content&quot; link or does not require it.</decisionPass>
+        <decisionFail>Document does not contain a &quot;skip to content&quot; link and requires it.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=184&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=184'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Site missing site map.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_184</sequenceID>
+        <decisionPass>Page is not part of a collection that requires a site map.</decisionPass>
+        <decisionFail>Page is part of a collection that requires a site map.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=241&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=241'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Tabular information may be missing table markup.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_241</sequenceID>
+        <decisionPass>Table markup is used for all tabular information.</decisionPass>
+        <decisionFail>Table markup is not used for all tabular information.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>97</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=271&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=271'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;dir&lt;/code&gt; attribute may be required to identify changes in text direction.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;body itemscope itemtype=&quot;http://schema.org/Organization&quot; data-config=&quot;/bin/iea/jbscotch/jbscotch.te ...</errorSourceCode>
+        
+        <sequenceID>97_1_271</sequenceID>
+        <decisionPass>All changes in text direction are marked using the &lt;code&gt;dir&lt;/code&gt; attribute.</decisionPass>
+        <decisionFail>All changes in text direction are not marked using the &lt;code&gt;dir&lt;/code&gt; attribute.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>126</lineNum>
+      <columnNum>5</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=197&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=197'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Anchor text may not identify the link destination.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;a itemprop=&quot;url&quot; href=&quot;https://www.jbscotch.com/en/&quot;&gt;&lt;img itemprop=&quot;logo&quot; alt=&quot;j&amp;amp;b logo&quot; src=&quot;/ ...</errorSourceCode>
+        
+        <sequenceID>126_5_197</sequenceID>
+        <decisionPass>Anchor has text that identifies the link destination.</decisionPass>
+        <decisionFail>Anchor does not have text that identifies the link destination.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>126</lineNum>
+      <columnNum>5</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=19&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=19'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Link text may not be meaningful.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;a itemprop=&quot;url&quot; href=&quot;https://www.jbscotch.com/en/&quot;&gt;&lt;img itemprop=&quot;logo&quot; alt=&quot;j&amp;amp;b logo&quot; src=&quot;/ ...</errorSourceCode>
+        
+        <sequenceID>126_5_19</sequenceID>
+        <decisionPass>Link text is meaningful when read alone (out of context).</decisionPass>
+        <decisionFail>Link text is not meaningful when read alone (out of context).</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>126</lineNum>
+      <columnNum>59</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=16&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=16'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Alt text is not empty and image may be decorative.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img itemprop=&quot;logo&quot; alt=&quot;j&amp;amp;b logo&quot; src=&quot;/content/dam/jbscotch/Global/Images/homepage/jb-logo.sv ...</errorSourceCode>
+        
+        <sequenceID>126_59_16</sequenceID>
+        <decisionPass>Image is not decorative.</decisionPass>
+        <decisionFail>Image is decorative.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>126</lineNum>
+      <columnNum>59</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=8&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=8'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;img&lt;/code&gt; element may require a long description.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img itemprop=&quot;logo&quot; alt=&quot;j&amp;amp;b logo&quot; src=&quot;/content/dam/jbscotch/Global/Images/homepage/jb-logo.sv ...</errorSourceCode>
+        
+        <sequenceID>126_59_8</sequenceID>
+        <decisionPass>Image does not require a long description or a long description is provided.</decisionPass>
+        <decisionFail>Image requires a long description and is not properly marked.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>126</lineNum>
+      <columnNum>59</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=14&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=14'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Image may be using color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img itemprop=&quot;logo&quot; alt=&quot;j&amp;amp;b logo&quot; src=&quot;/content/dam/jbscotch/Global/Images/homepage/jb-logo.sv ...</errorSourceCode>
+        
+        <sequenceID>126_59_14</sequenceID>
+        <decisionPass>There are no references to this image using color alone.</decisionPass>
+        <decisionFail>There is a reference to this image using color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>126</lineNum>
+      <columnNum>59</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=251&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=251'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Image may contain text with poor contrast.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img itemprop=&quot;logo&quot; alt=&quot;j&amp;amp;b logo&quot; src=&quot;/content/dam/jbscotch/Global/Images/homepage/jb-logo.sv ...</errorSourceCode>
+        
+        <sequenceID>126_59_251</sequenceID>
+        <decisionPass>Image does not contain text with a poor contrast ratio.</decisionPass>
+        <decisionFail>Image contains text with poor contrast ratio.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>126</lineNum>
+      <columnNum>59</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=11&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=11'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Image may contain text that is not in Alt text.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img itemprop=&quot;logo&quot; alt=&quot;j&amp;amp;b logo&quot; src=&quot;/content/dam/jbscotch/Global/Images/homepage/jb-logo.sv ...</errorSourceCode>
+        
+        <sequenceID>126_59_11</sequenceID>
+        <decisionPass>Any text in image is also in Alt text or text in image is decorative or redundant.</decisionPass>
+        <decisionFail>Image contains some text that is not in Alt text.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>261</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=16&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=16'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Alt text is not empty and image may be decorative.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img class=&quot;non-adaptive&quot; src=&quot;/content/dam/jbscotch/Global/Images/jb-whisky-brand-story-blend-1200x ...</errorSourceCode>
+        
+        <sequenceID>261_3_16</sequenceID>
+        <decisionPass>Image is not decorative.</decisionPass>
+        <decisionFail>Image is decorative.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>261</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=239&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=239'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;img&lt;/code&gt; has &lt;code&gt;title&lt;/code&gt; attribute and image may be decorative.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img class=&quot;non-adaptive&quot; src=&quot;/content/dam/jbscotch/Global/Images/jb-whisky-brand-story-blend-1200x ...</errorSourceCode>
+        
+        <sequenceID>261_3_239</sequenceID>
+        <decisionPass>Image is not decorative.</decisionPass>
+        <decisionFail>Image is decorative.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>261</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=8&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=8'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;img&lt;/code&gt; element may require a long description.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img class=&quot;non-adaptive&quot; src=&quot;/content/dam/jbscotch/Global/Images/jb-whisky-brand-story-blend-1200x ...</errorSourceCode>
+        
+        <sequenceID>261_3_8</sequenceID>
+        <decisionPass>Image does not require a long description or a long description is provided.</decisionPass>
+        <decisionFail>Image requires a long description and is not properly marked.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>261</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=14&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=14'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Image may be using color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img class=&quot;non-adaptive&quot; src=&quot;/content/dam/jbscotch/Global/Images/jb-whisky-brand-story-blend-1200x ...</errorSourceCode>
+        
+        <sequenceID>261_3_14</sequenceID>
+        <decisionPass>There are no references to this image using color alone.</decisionPass>
+        <decisionFail>There is a reference to this image using color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>261</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=251&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=251'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Image may contain text with poor contrast.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img class=&quot;non-adaptive&quot; src=&quot;/content/dam/jbscotch/Global/Images/jb-whisky-brand-story-blend-1200x ...</errorSourceCode>
+        
+        <sequenceID>261_3_251</sequenceID>
+        <decisionPass>Image does not contain text with a poor contrast ratio.</decisionPass>
+        <decisionFail>Image contains text with poor contrast ratio.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>261</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=178&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=178'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Alt text does not convey the same information as the image.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img class=&quot;non-adaptive&quot; src=&quot;/content/dam/jbscotch/Global/Images/jb-whisky-brand-story-blend-1200x ...</errorSourceCode>
+        
+        <sequenceID>261_3_178</sequenceID>
+        <decisionPass>Alt text conveys the same information as the image.</decisionPass>
+        <decisionFail>Alt text does not convey the same information as the image.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>261</lineNum>
+      <columnNum>3</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=11&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=11'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;Image may contain text that is not in Alt text.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;img class=&quot;non-adaptive&quot; src=&quot;/content/dam/jbscotch/Global/Images/jb-whisky-brand-story-blend-1200x ...</errorSourceCode>
+        
+        <sequenceID>261_3_11</sequenceID>
+        <decisionPass>Any text in image is also in Alt text or text in image is decorative or redundant.</decisionPass>
+        <decisionFail>Image contains some text that is not in Alt text.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>264</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script type=&quot;module/config&quot; id=&quot;adaptive-image-31-config&quot;&gt;
+		  	{&quot;data&quot;:{&quot;componentType&quot;:&quot;adaptiveI ...</errorSourceCode>
+        
+        <sequenceID>264_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>264</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script type=&quot;module/config&quot; id=&quot;adaptive-image-31-config&quot;&gt;
+		  	{&quot;data&quot;:{&quot;componentType&quot;:&quot;adaptiveI ...</errorSourceCode>
+        
+        <sequenceID>264_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>264</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script type=&quot;module/config&quot; id=&quot;adaptive-image-31-config&quot;&gt;
+		  	{&quot;data&quot;:{&quot;componentType&quot;:&quot;adaptiveI ...</errorSourceCode>
+        
+        <sequenceID>264_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>304</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+    var ageGateObjName = &#039;age_gate_core&#039;;
+    function hasAgeGatePassed() {
+		// either coo ...</errorSourceCode>
+        
+        <sequenceID>304_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>304</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+    var ageGateObjName = &#039;age_gate_core&#039;;
+    function hasAgeGatePassed() {
+		// either coo ...</errorSourceCode>
+        
+        <sequenceID>304_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>304</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+    var ageGateObjName = &#039;age_gate_core&#039;;
+    function hasAgeGatePassed() {
+		// either coo ...</errorSourceCode>
+        
+        <sequenceID>304_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>313</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+document.addEventListener(&quot;DOMContentLoaded&quot;, function(event) {
+	document.documentElement.s ...</errorSourceCode>
+        
+        <sequenceID>313_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>313</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+document.addEventListener(&quot;DOMContentLoaded&quot;, function(event) {
+	document.documentElement.s ...</errorSourceCode>
+        
+        <sequenceID>313_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>313</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script&gt;
+document.addEventListener(&quot;DOMContentLoaded&quot;, function(event) {
+	document.documentElement.s ...</errorSourceCode>
+        
+        <sequenceID>313_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>320</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=86&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=86'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may use color alone.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script type=&quot;text/javascript&quot;&gt;
+if(typeof _satellite != &#039;undefined&#039;)
+	_satellite.pageBottom();
+
+
+
+&lt;/ ...</errorSourceCode>
+        
+        <sequenceID>320_1_86</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not use color alone.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; uses color alone.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>320</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=89&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=89'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; user interface may not be accessible.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script type=&quot;text/javascript&quot;&gt;
+if(typeof _satellite != &#039;undefined&#039;)
+	_satellite.pageBottom();
+
+
+
+&lt;/ ...</errorSourceCode>
+        
+        <sequenceID>320_1_89</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; user interface is accessible.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; user interface is not accessible.</decisionFail>
+
+    </result> 
+    <result>
+      <resultType>Potential Problem</resultType>
+      <lineNum>320</lineNum>
+      <columnNum>1</columnNum>
+      <errorMsg>&lt;a href=&quot;http://achecker.ca/checker/suggestion.php?id=87&quot;
+               onclick=&quot;AChecker.popup('http://achecker.ca/checker/suggestion.php?id=87'); return false;&quot; 
+               title=&quot;Suggest improvements on this error message&quot; target=&quot;_new&quot;&gt;&lt;code&gt;script&lt;/code&gt; may cause screen flicker.&lt;/a&gt;
+      </errorMsg>
+      <errorSourceCode>&lt;script type=&quot;text/javascript&quot;&gt;
+if(typeof _satellite != &#039;undefined&#039;)
+	_satellite.pageBottom();
+
+
+
+&lt;/ ...</errorSourceCode>
+        
+        <sequenceID>320_1_87</sequenceID>
+        <decisionPass>&lt;code&gt;script&lt;/code&gt; does not cause screen flicker.</decisionPass>
+        <decisionFail>&lt;code&gt;script&lt;/code&gt; causes screen flicker.</decisionFail>
+
+    </result> 
+
+  </results>
+</resultset>
