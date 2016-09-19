@@ -13,8 +13,9 @@
         <module>wpt</module>
         <module>pally</module>
         <module>sonar</module>
-        <module>gpsi</module>
+        <module>gpsiprocessor</module>
         <module>zap</module>
+        <module>achecker</module>
         <module>sitespeed</module>
         <module>readproperties</module>
         <module>masterprocessor</module>

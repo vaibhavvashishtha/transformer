@@ -1,4 +1,4 @@
-package com.json.zapprocessor;
+package com.json.acheckerprocessor;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -58,14 +58,7 @@ public class AcheckerXMLProcessor {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
-            Map keyMap = ReadProperties.loadPropertiesFromFile(propertiesFilePath
-                    +slash+propertiesFileName, true);
             Map resultMap = new HashMap();
-            //Node node2 = doc.getDocumentElement().getFirstChild();
-
-            //XPath xPath = XPathFactory.newInstance().newXPath();
-            //Node node = (Node) xPath.evaluate("/status", doc, XPathConstants.NODE);
-            //System.out.println(node.getNodeValue());
             NodeList nList = doc.getElementsByTagName("summary");
             if (nList.getLength()==1) {
                 Node node = nList.item(0);

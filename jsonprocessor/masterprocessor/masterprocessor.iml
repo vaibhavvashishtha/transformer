@@ -20,6 +20,11 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
     <orderEntry type="module" module-name="sonarprocessor" />
     <orderEntry type="module" module-name="zapprocessor" />
+    <orderEntry type="module" module-name="sitespeedprocessor" />
+    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.8.3" level="project" />
+    <orderEntry type="module" module-name="pallyprocessor" />
+    <orderEntry type="module" module-name="common" />
+    <orderEntry type="module" module-name="achecker" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.14" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml:3.14" level="project" />

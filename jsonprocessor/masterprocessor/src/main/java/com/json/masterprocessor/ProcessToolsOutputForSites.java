@@ -3,6 +3,7 @@ package com.json.masterprocessor;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.json.zapprocessor.ZapXMLProcessor;
 import org.apache.commons.configuration2.Configuration;
 
 import com.json.GPSIJsonProcessor;
@@ -12,7 +13,7 @@ import com.json.WPTJsonProcessor;
 import com.json.constants.Constants;
 import com.json.service.ReadPropertiesService;
 import com.json.service.impl.ReadPropertiesServiceImpl;
-import com.json.zapprocessor.AcheckerXMLProcessor;
+import com.json.acheckerprocessor.AcheckerXMLProcessor;
 
 import processor.Pa11yProcessor;
 
@@ -220,7 +221,7 @@ public class ProcessToolsOutputForSites {
 	 *             the exception
 	 */
 	private static void processZapXML() throws Exception {
-		AcheckerXMLProcessor zapXMLProcessor = new AcheckerXMLProcessor();
+		ZapXMLProcessor zapXMLProcessor = new ZapXMLProcessor();
 
 		if (sites == null) {
 			for (Object site : masterProcessorConfig.getList(Constants.SITES)) {
@@ -347,7 +348,7 @@ public class ProcessToolsOutputForSites {
 	 * @param site
 	 *            the site
 	 */
-	private static void processZapXML(AcheckerXMLProcessor zapXMLProcessor, Object site) {
+	private static void processZapXML(ZapXMLProcessor zapXMLProcessor, Object site) {
 		String siteName = getSiteName(site);
 		String slash = getCorrectSlash();
 		zapXMLProcessor.processXML(
