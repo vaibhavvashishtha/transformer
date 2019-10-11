@@ -17,7 +17,6 @@ import com.json.acheckerprocessor.AcheckerXMLProcessor;
 
 import processor.Pa11yProcessor;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ProcessToolsOutputForSites.
  */
@@ -38,7 +37,6 @@ public class ProcessToolsOutputForSites {
 	/** The env. */
 	private static String env;
 
-	private static Map<String, String> mapOfCLIParams;
 
 	/**
 	 * The main method.
@@ -69,9 +67,6 @@ public class ProcessToolsOutputForSites {
 			case "gpsi":
 				processGPSIJson();
 				break;
-//			case "sonar":
-//				processSonarJson();
-//				break;
 			case "zap":
 				processZapXML();
 				break;
@@ -106,7 +101,7 @@ public class ProcessToolsOutputForSites {
 	 *             the exception
 	 */
 	private static void getConfigurations(String[] args) throws Exception {
-		mapOfCLIParams = getAllCLIParameters(args);
+		Map<String, String> mapOfCLIParams = getAllCLIParameters(args);
 		if (mapOfCLIParams.get("sites") != null) {
 			sites = mapOfCLIParams.get("sites").split(",");
 		}
@@ -368,9 +363,7 @@ public class ProcessToolsOutputForSites {
 						masterProcessorConfig.getString(Constants.TOOLS_TRANSFORMER_PROPERTIES_DIRECTORY),
 						masterProcessorConfig
 								.getString(Constants.ACHECKER + Constants.DOT + Constants.PROPERTY_FILE_NAME),
-						masterProcessorConfig.getString(site + Constants.DOT + Constants.ACHECKER),
-						getResultFileName(Constants.ACHECKER, site),
-						masterProcessorConfig.getString(Constants.TOOLS_RESULT_JSON_DIRECTORY) + slash + siteName);
+						masterProcessorConfig.getString(site + Constants.DOT + Constants.ACHECKER));
 	}
 
 	/**

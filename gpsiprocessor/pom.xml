@@ -9,6 +9,11 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+    	<dependency>
+			<groupId>com.json</groupId>
+			<artifactId>readproperties</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
         <!-- https://mvnrepository.com/artifact/com.bazaarvoice.jolt/json-utils -->
         <dependency>
             <groupId>com.bazaarvoice.jolt</groupId>

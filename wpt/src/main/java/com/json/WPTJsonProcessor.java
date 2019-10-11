@@ -2,6 +2,8 @@ package com.json;
 
 import com.bazaarvoice.jolt.JsonUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.json.service.ReadPropertiesService;
+import com.json.service.impl.ReadPropertiesServiceImpl;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -15,6 +17,10 @@ import java.util.Set;
  * Created by vaibhavvashishtha on 03/09/16.
  */
 public class WPTJsonProcessor implements FileProcessor{
+	
+	/** The read properties service. */
+	private static ReadPropertiesService readPropertiesService = new ReadPropertiesServiceImpl();
+
 
 	//private String splunkJsonFileName = "";
 	private String outputDirectoryForSplunkJsons = "";
@@ -92,8 +98,8 @@ public class WPTJsonProcessor implements FileProcessor{
 	 */
 	public Map<String, Object> preprepareJsonDataToWrite(Map<String, Object> sourceJsonMap) throws Exception {
 		Map targetJsonMap = new HashMap();
-		Map<String, String> keyMap = ReadProperties
-				.loadPropertiesFromFile(propertiesFilePath + slash + propertiesFileName, true);
+		Map<String, Object> keyMap = readPropertiesService
+				.readProperties(propertiesFilePath + slash + propertiesFileName);
 
 		Set<String> keys = keyMap.keySet();
 		for (String key : keys) {

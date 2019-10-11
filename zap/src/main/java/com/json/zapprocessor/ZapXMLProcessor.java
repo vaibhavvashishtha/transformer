@@ -4,6 +4,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.json.service.ReadPropertiesService;
+import com.json.service.impl.ReadPropertiesServiceImpl;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -20,6 +23,9 @@ import java.util.Map;
  * Created by vaibhavvashishtha on 06/09/16.
  */
 public class ZapXMLProcessor {
+	
+	/** The read properties service. */
+	private static ReadPropertiesService readPropertiesService = new ReadPropertiesServiceImpl();
 
     private String outputDirectoryForSplunkJsons = "";
     private String propertiesFilePath = "";
@@ -56,8 +62,8 @@ public class ZapXMLProcessor {
 
             doc.getDocumentElement().normalize();
 
-            Map keyMap = ReadProperties.loadPropertiesFromFile(propertiesFilePath
-                    +slash+propertiesFileName, true);
+            Map keyMap = readPropertiesService.readProperties(propertiesFilePath
+                    +slash+propertiesFileName);
 
             NodeList nList = doc.getElementsByTagName((String) keyMap.get("nodename"));
             int low = 0;

@@ -2,6 +2,8 @@ package com.json;
 
 import com.bazaarvoice.jolt.JsonUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.json.service.ReadPropertiesService;
+import com.json.service.impl.ReadPropertiesServiceImpl;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -11,6 +13,9 @@ import java.util.*;
  * Created by vaibhavvashishtha on 03/09/16.
  */
 public class GPSIJsonProcessor implements FileProcessor{
+	
+	/** The read properties service. */
+	private static ReadPropertiesService readPropertiesService = new ReadPropertiesServiceImpl();
 
 	private String outputDirectoryForSplunkJsons = "";
 	private String propertiesFilePath = "";
@@ -26,7 +31,6 @@ public class GPSIJsonProcessor implements FileProcessor{
 							String propertiesFileName, String sourceJsonForDesktop, String sourceJsonforMobile,
 							String resultDirectory) {
 		try {
-			// this.splunkJsonFileName = splunkJsonFileName;
 			this.outputDirectoryForSplunkJsons = outputDirectoryForSplunkJsons;
 			this.propertiesFilePath = propertiesFilePath;
 			this.propertiesFileName = propertiesFileName;
@@ -64,8 +68,9 @@ public class GPSIJsonProcessor implements FileProcessor{
 
 	/**
 	 * @return
+	 * @throws FileNotFoundException 
 	 */
-	public Map getMapFromJSON(boolean isDesktopJSON) throws Exception {
+	public Map getMapFromJSON(boolean isDesktopJSON) throws FileNotFoundException  {
 		Map<String, Object> jsonMap = null;
 		if (isDesktopJSON)
 			jsonMap = JsonUtils.jsonToMap(
@@ -89,7 +94,7 @@ public class GPSIJsonProcessor implements FileProcessor{
 		stream.close();
 	}
 
-	private File createFileIfNotPresent() throws IOException {
+	private File createFileIfNotPresent() {
 		File file = new File(resultDirectory + slash + resultFileName);
 		file.getParentFile().mkdirs();
 		return file;
@@ -98,12 +103,13 @@ public class GPSIJsonProcessor implements FileProcessor{
 	/**
 	 * @param sourceJsonMap
 	 * @return
+	 * @throws IOException 
 	 */
-	public Map<String, Object> preprepareJsonDataToWrite(Map<String, Object> sourceJsonMap)
-			throws Exception {
-		Map targetJsonMap = new HashMap();
-		Map keyMap = ReadProperties
-				.loadPropertiesFromFile(propertiesFilePath + slash + propertiesFileName, true);
+	public Map<String, Object> preprepareJsonDataToWrite(Map<String, Object> sourceJsonMap) throws IOException
+			{
+		Map targetJsonMap = new HashMap<String, Object>();
+		Map keyMap = readPropertiesService
+				.readProperties(propertiesFilePath + slash + propertiesFileName);
 		
 			getStringObjectMap(sourceJsonMap, keyMap, targetJsonMap);
 			addDateToJson(targetJsonMap);
@@ -134,18 +140,6 @@ public class GPSIJsonProcessor implements FileProcessor{
 		return targetJsonMap;
 	}
 
-//	/**
-//	 * @return
-//	 */
-//	public Map<String, Object> preprepareJsonDataToWrite(List listOfJsonMaps) throws Exception {
-//		Map targetJsonMap = new HashMap();
-//		for (Object sourceJson : listOfJsonMaps) {
-//			targetJsonMap.putAll(preprepareJsonDataToWrite((Map) sourceJson));
-//		}
-//		Date date = new Date();
-//		targetJsonMap.put("date", date.getDate() + "-" + date.getMonth());
-//		return targetJsonMap;
-//	}
 
 	
 }
